@@ -1,6 +1,6 @@
 #include <object.h>
 #include <listobject.h>
-#include "Python.h"
+#include "100-test_lists.py"
 
 /**
  * print_python_list_info - prints some basic info about Python lists.
