@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 '''a module defining a square'''
-class square:
+class Square:
 	def __init__(self, size=0):
 		'''initializing the square class
 		   Arg: size: represents size of the defined square

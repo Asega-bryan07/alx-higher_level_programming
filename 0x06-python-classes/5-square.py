@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-class square:
+class Square
         '''a class that represents a square'''
         def __init__(self, size=0):
                 if isinstance(size, int):
