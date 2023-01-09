@@ -1,5 +1,5 @@
 #!/usr/bin/bash/python3
-"""a module that inherits from the list class"""
+"""A module that inherits from the list class"""
 
 class MyList(list):
     """a class that inherits from the list"""
