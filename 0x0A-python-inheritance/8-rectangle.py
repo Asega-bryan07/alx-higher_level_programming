@@ -10,7 +10,7 @@ class Rectangle(BaseGeometry):
     """
     a class to define rectangle using BaseGeometry
     """
- 
+
     def __init__(self, width, height):
         """
         initialize a new rectangle
