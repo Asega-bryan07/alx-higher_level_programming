@@ -4,6 +4,7 @@
 This module defines a function that adds a new attribute to an object
 """
 
+
 def add_attribute(obj, att, value):
     """
     adds a new attribute to an object if it’s possible

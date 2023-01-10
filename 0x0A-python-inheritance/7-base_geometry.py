@@ -4,6 +4,7 @@
 defines a base geometry class BaseGeometry
 """
 
+
 class BaseGeometry:
     """
     the class that represents base geometry
@@ -13,6 +14,7 @@ class BaseGeometry:
         method not implemented yet
         """
         raise Exception("area() is not implemented")
+
     def integer_validator(self, name, value):
         """
         validates the value of an integer

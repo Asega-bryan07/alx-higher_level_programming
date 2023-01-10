@@ -5,6 +5,7 @@ Defines a rectangle subclass square
 """
 Rectangle = __import__('9-rectangle').Rectangle
 
+
 class Square(Rectangle):
     """
     Represents a square

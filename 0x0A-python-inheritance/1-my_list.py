@@ -2,6 +2,7 @@
 
 """A module that inherits from the list class"""
 
+
 class MyList(list):
     """a class that inherits from the list"""
     def print_sorted(self):
