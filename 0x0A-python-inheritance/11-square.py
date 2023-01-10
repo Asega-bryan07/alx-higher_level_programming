@@ -1,4 +1,4 @@
-#!/usr/bin/bash/python3
+#!/usr/bin/python3
 
 """This module defines a rectangle subclass square"""
 Rectangle = __import__('9-rectangle').Rectangle

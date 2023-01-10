@@ -1,4 +1,4 @@
-#!/usr/bin/bash/python3
+#!/usr/bin/python3
 """this module defines class MyInt that inherits from int"""
 
 class MyInt(int):

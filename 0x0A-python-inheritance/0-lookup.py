@@ -1,4 +1,4 @@
-#!/usr/bin/bash/python3
+#!/usr/bin/python3
 """a module that returns the list of available attributes and
 methods of an object"""
 
