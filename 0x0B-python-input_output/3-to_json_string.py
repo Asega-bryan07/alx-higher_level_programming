@@ -2,7 +2,7 @@
 
 """
 This module defines a string-to-JSON function
-""" 
+"""
 
 
 def to_json_string(my_obj):

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-This module defines adds all arguments to a python list and save 
+This module defines adds all arguments to a python list and save
 them to a file
 """
 
