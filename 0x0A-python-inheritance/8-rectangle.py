@@ -5,12 +5,12 @@ Inherits from base geometry
 """
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
+
 class Rectangle(BaseGeometry):
     """
     a class to define rectangle using BaseGeometry
     """
-
-    
+ 
     def __init__(self, width, height):
         """
         initialize a new rectangle
