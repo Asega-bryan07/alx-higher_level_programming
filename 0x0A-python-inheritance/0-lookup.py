@@ -8,4 +8,4 @@ def lookup(obj):
     """
     the function looks for all attributes and methods of an object
     """
-    return dir(obj)
+    return (dir(obj))
