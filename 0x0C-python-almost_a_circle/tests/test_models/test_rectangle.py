@@ -4,8 +4,9 @@ import inspect
 import io
 import unittest
 import os
-from models.base import Base
-from models.rectangle import Rectangle
+from models.base import base
+import tkinter
+from models.rectangle import rectangle
 import json
 from io import StringIO
 import sys

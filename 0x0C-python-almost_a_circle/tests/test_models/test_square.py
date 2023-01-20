@@ -1,193 +1,11 @@
-#!/usr/bin/python3
-from contextlib import redirect_stdout
-import contextlib
-import inspect
-import io
-import unittest
-from models.base import Base
-from models.rectangle import Rectangle
-from models.square import Square
-import os
-import sys
-import json
-from io import StringIO
-
-
-'''
-    Runs test cases for the square module
-'''
-
-
-class test_square(unittest.TestCase):
-    '''
-        Testing square
-    '''
-
-    def setUp(self):
-        '''
-            Initializing instance with width and height
-            parameters
-        '''
-        self.s = Square(5)
-
-    def tearDown(self):
-        '''
-            Deleting created instance
-        '''
-        try:
-            os.remove("Square.json")
-        except:
-            pass
-        del self.s
-
-    def test_width(self):
-        '''
-            Testing the square width getter
-        '''
-        self.assertEqual(5, self.s.width)
-
-    def test_height(self):
-        '''
-            Testing the square height getter
-        '''
-        self.assertEqual(5, self.s.height)
-
-    def test_x(self):
-        '''
-            Testing square x getter and setter
-        '''
-
-        self.s.x = 54
-        self.assertEqual(54, self.s.x)
-        self.assertEqual(0, self.s.y)
-
-    def test_y(self):
-        '''
-            Testing square y getter and setter
-        '''
-
-        self.s.y = 45
-        self.assertEqual(45, self.s.y)
-        self.assertEqual(0, self.s.x)
-
-    def test_asquare_id(self):
-        '''
-            Test the id for square
-        '''
-        sq = Square(2, 0, 0, 199)
-        self.assertEqual(199, sq.id)
-
-    def test_width_string(self):
-        '''
-            Testing for other than int
-        '''
-        with self.assertRaises(TypeError):
-            sq = Square("1")
-
-    def test_width_bool(self):
-        '''
-            Testing for other than int
-        '''
-        with self.assertRaises(TypeError):
-            sq = Square(True)
-
-    def test_width_list(self):
-        '''
-            Testing for other than int
-        '''
-        with self.assertRaises(TypeError):
-            sq = Square([10, 6])
-
-    def test_x_string(self):
-        '''
-            Testing for other than int
-        '''
-        with self.assertRaises(TypeError):
-            sq = Square(1, "46")
-
-    def test_x_bool(self):
-        '''
-            Testing for other than int
-        '''
-        with self.assertRaises(TypeError):
-            sq = Square(1, True)
-
-    def test_x_list(self):
-        '''
-            Testing for other than int
-        '''
-        with self.assertRaises(TypeError):
-            sq = Square(1, [10, 6])
-
-    def test_y_string(self):
-        '''
-            Testing for other than int
-        '''
-        with self.assertRaises(TypeError):
-            sq = Square(1, 7, "46")
-
-    def test_y_bool(self):
-        '''
-            Testing for other than int
-        '''
-        with self.assertRaises(TypeError):
-            sq = Square(1, 7, True)
-
-    def test_y_list(self):
-        '''
-            Testing for other than int
-        '''
-        with self.assertRaises(TypeError):
-            sq = Square(1, 7, [10, 6])
-
-    def test_width_negative(self):
-        '''
-            Testing with negative int
-        '''
-        with self.assertRaises(ValueError):
-            sq = Square(-4)
-
-    def test_x_negative(self):
-        '''
-            Testing with negative int
-        '''
-        with self.assertRaises(ValueError):
-            sq = Square(4, -3)
-
-    def test_y_negative(self):
-        '''
-            Testing with negative int
-        '''
-        with self.assertRaises(ValueError):
-            sq = Square(4, 2, -3)
-
-    def test_width_zero(self):
-        '''
-            Testing with negative int
-        '''
-        with self.assertRaises(ValueError):
-            sq = Square(0, 5)
-
-    def test_width_float(self):
-        '''
-            Testing for other than int
-        '''
-        with self.assertRaises(TypeError):
-            sq = Square(1.07, 5)
-
-    def test_x_float(self):
-        '''
-            Testing for other than int
-        '''
-        with self.assertRaises(TypeError):
-            sq = Square(5
+from contextlib import redirect_stdoutimport contextlibimport inspectimport ioimport unittestfrom models.base import Basefrom models.rectangle import Rectanglefrom models.square import Squareimport osimport sysimport jsonfrom io import StringIO'''    Runs test cases for the square module'''class test_square(unittest.TestCase):    '''        Testing square    '''    def setUp(self):        '''            Initializing instance with width and height            parameters        '''        self.s = Square(5)    def tearDown(self):        '''            Deleting created instance        '''        try:            os.remove("Square.json")        except:            pass        del self.s    def test_width(self):        '''            Testing the square width getter        '''        self.assertEqual(5, self.s.width)    def test_height(self):        '''            Testing the square height getter        '''        self.assertEqual(5, self.s.height)    def test_x(self):        '''            Testing square x getter and setter        '''        self.s.x = 54        self.assertEqual(54, self.s.x)        self.assertEqual(0, self.s.y)    def test_y(self):        '''            Testing square y getter and setter        '''        self.s.y = 45        self.assertEqual(45, self.s.y)        self.assertEqual(0, self.s.x)    def test_asquare_id(self):        '''            Test the id for square        '''        sq = Square(2, 0, 0, 199)        self.assertEqual(199, sq.id)    def test_width_string(self):        '''            Testing for other than int        '''        with self.assertRaises(TypeError):            sq = Square("1")    def test_width_bool(self):        '''            Testing for other than int        '''        with self.assertRaises(TypeError):            sq = Square(True)    def test_width_list(self):        '''            Testing for other than int        '''        with self.assertRaises(TypeError):            sq = Square([10, 6])    def test_x_string(self):        '''            Testing for other than int        '''        with self.assertRaises(TypeError):            sq = Square(1, "46")    def test_x_bool(self):        '''            Testing for other than int        '''        with self.assertRaises(TypeError):            sq = Square(1, True)    def test_x_list(self):        '''            Testing for other than int        '''        with self.assertRaises(TypeError):            sq = Square(1, [10, 6])    def test_y_string(self):        '''            Testing for other than int        '''        with self.assertRaises(TypeError):            sq = Square(1, 7, "46")    def test_y_bool(self):        '''            Testing for other than int        '''        with self.assertRaises(TypeError):            sq = Square(1, 7, True)    def test_y_list(self):        '''            Testing for other than int        '''        with self.assertRaises(TypeError):            sq = Square(1, 7, [10, 6])    def test_width_negative(self):        '''            Testing with negative int        '''        with self.assertRaises(ValueError):            sq = Square(-4)    def test_x_negative(self):        '''            Testing with negative int        '''        with self.assertRaises(ValueError):            sq = Square(4, -3)    def test_y_negative(self):        '''            Testing with negative int        '''        with self.assertRaises(ValueError):            sq = Square(4, 2, -3)    def test_width_zero(self):        '''            Testing with negative int        '''        with self.assertRaises(ValueError):            sq = Square(0, 5)    def test_width_float(self):        '''            Testing for other than int        '''        with self.assertRaises(TypeError):            sq = Square(1.07, 5)    def test_x_float(self):        '''            Testing for other than int        '''        with self.assertRaises(TypeError):            sq = Square(5, 1.07)
 
     def test_y_float(self):
-                    '''
+        '''
             Testing for other than int
         '''
         with self.assertRaises(TypeError):
-        sq = Square(5, 8, 1.07)
+            sq = Square(5, 8, 1.07)
 
     def test_area(self):
         '''
@@ -265,7 +83,7 @@ class test_square(unittest.TestCase):
         '''
         # self.assertEqual(self.s.id, "str")
         with self.assertRaises(TypeError):
-            self.s.update("str") 
+           self.s.update("str") 
 
     def test_to_dict(self):
         '''
@@ -281,10 +99,10 @@ class test_square(unittest.TestCase):
         r1 = Square(5, 0, 0, 410)
         r1_dict = r1.to_dictionary()
         self.assertEqual(r1_dict,
-                {'size': 5, 'id': 410, 'x': 0, 'y': 0})
+                         {'size': 5, 'id': 410, 'x': 0, 'y': 0})
 
     def test_missing_height(self):
-            '''
+        '''
             Expecting a type error because height and width are missing
         '''
         with self.assertRaises(TypeError):
@@ -350,23 +168,23 @@ class test_square(unittest.TestCase):
             pass
 
     def test_json_string_type(self):
-        '''
+            '''
                 Testing the returned type
             '''
             list_input = [
-                    {'id': 2089, 'size': 10},
-                    {'id': 2712, 'size': 1}]
+                {'id': 2089, 'size': 10},
+                {'id': 2712, 'size': 1}]
             json_list_input = Square.to_json_string(list_input)
             list_output = Square.from_json_string(json_list_input)
             self.assertEqual(type(list_input), list)
 
     def test_json_string(self):
-        '''
+            '''
                 Testing that the json string gets converted into a list
             '''
             list_input = [
-                    {'id': 2089, 'size': 10},
-                    {'id': 2712, 'size': 7}]
+                {'id': 2089, 'size': 10},
+                {'id': 2712, 'size': 7}]
             json_list_input = Square.to_json_string(list_input)
             list_output = Square.from_json_string(json_list_input)
             s1 = {'id': 2089, 'size': 10}
@@ -473,15 +291,15 @@ class test_square(unittest.TestCase):
         sys.stdout = sys.__stdout__
 
         output = ("##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n")
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n")
         self.assertEqual(capturedOutput.getvalue(), output)
 
     def test_display_square_size_one(self):
@@ -521,15 +339,15 @@ class test_square(unittest.TestCase):
         sys.stdout = sys.__stdout__
 
         output = ("##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n" +
-                "##########\n")
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n" +
+                  "##########\n")
         self.assertEqual(capturedOutput.getvalue(), output)
 
     def test_display_square_size_one(self):
@@ -664,10 +482,10 @@ class TestSquare(unittest.TestCase):
             S.display()
             output = bufferIO.getvalue()
             self.assertEqual(output,
-                    ('\n' * 4 + (' ' * 3 + '#' * 2 + '\n') * 2))
+                             ('\n' * 4 + (' ' * 3 + '#' * 2 + '\n') * 2))
 
-            def test_update_kwargs(self):
-                """
+    def test_update_kwargs(self):
+        """
         Test for update method: kwargs
         """
         S = Square(1, 2, 3, 4)
@@ -727,14 +545,6 @@ class TestSquare(unittest.TestCase):
         self.assertTrue(issubclass(Square, Base))
         self.assertFalse(isinstance(Square, Base))
 
-    # def test_10_3(self):
-    #     """Test Square class: check for missing args."""
-
-    #     with self.assertRaises(TypeError) as x:
-    #         s1 = Square()
-    #     self.assertEqual(
-    #         "__init__() missing 1 required positional argument: 'size'", str(
-    #             x.exception))
 
     def test_10_4(self):
         """Test Square for methods inherited from Rectangle."""
@@ -827,15 +637,6 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(len(s1_dictionary), len(s2_dictionary))
         self.assertEqual(type(s2_dictionary), dict)
         self.assertFalse(s1 == s2)
-
-    # def test_14_1(self):
-    #     """Test for public method to_dictionary with wrong args."""
-
-    #     s = "to_dictionary() takes 1 positional argument but 2 were given"
-    #     with self.assertRaises(TypeError) as x:
-    #         s1 = Square(10, 2, 1, 9)
-    #         s1_dictionary = s1.to_dictionary("Hi")
-    #     self.assertEqual(s, str(x.exception))
 
 
 if __name__ == '__main__':
