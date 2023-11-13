@@ -7,5 +7,7 @@
  */
 exports.addMeMaybe = function (number,
 	theFunction) {
-	theFunction(++number);
+	for (let i = 0; i < number; i++) {
+		theFunction();
+	}
 };
