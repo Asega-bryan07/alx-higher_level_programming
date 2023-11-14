@@ -1,24 +1,22 @@
 #!/usr/bin/node
-/**
- * a script that concats 2 files.
- *
- * The first argument is the file path of the first source file
- * The second argument is the file path of the second source file
- * The third argument is the file path of the destination
- */
-const fs = require('files');
+const fs = require('fs');
 
 const fileA = process.argv[2];
 const fileB = process.argv[3];
 const fileC = process.argv[4];
 
-if (fs.existsSync(fileA) && fs.statSync((fileA).isFile && fs.existsSync(fileB) && fs.statSync((fileB).isFile && fileC !== undefined) {
-		const fileAContent = fs.readFileSync(fileA);
-		const fileBContent = fs.readFileSync(fileB);
-		const stream = createWriteStream(fileC);
+if (
+  fs.existsSync(fileA) &&
+fs.statSync(fileA).isFile &&
+fs.existsSync(fileB) &&
+fs.statSync(fileB).isFile &&
+fileC !== undefined
+) {
+  const fileAContent = fs.readFileSync(fileA);
+  const fileBContent = fs.readFileSync(fileB);
+  const stream = fs.createWriteStream(fileC);
 
-		stream.write(fileAContent);
-		stream.write(fileBContent);
-		stream.end();
-	}
-
+  stream.write(fileAContent);
+  stream.write(fileBContent);
+  stream.end();
+}
