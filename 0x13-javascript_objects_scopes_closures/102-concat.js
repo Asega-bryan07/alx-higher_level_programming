@@ -6,17 +6,15 @@
  * The second argument is the file path of the second source file
  * The third argument is the file path of the destination
  */
-const files = require('files');
+const fs = require('files');
 
 const fileA = process.argv[2];
 const fileB = process.argv[3];
 const fileC = process.argv[4];
 
-if (files.existsSync(fileA) && files.statSync((fileA).isFile &&
-	files.existsSync(fileB) && files.statSync((fileB).isFile &&
-		fileC !== undefined) {
-		const fileAContent = files.readFileSync(fileA);
-		const fileBContent = files.readFileSync(fileB);
+if (fs.existsSync(fileA) && fs.statSync((fileA).isFile && fs.existsSync(fileB) && fs.statSync((fileB).isFile && fileC !== undefined) {
+		const fileAContent = fs.readFileSync(fileA);
+		const fileBContent = fs.readFileSync(fileB);
 		const stream = createWriteStream(fileC);
 
 		stream.write(fileAContent);
