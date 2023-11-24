@@ -14,7 +14,7 @@ If the table states is empty, print Nothing followed by a new line
 
 from sys import argv
 from model_state import Base, State
-from sqlalchemy import create_engine
+from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
@@ -32,6 +32,6 @@ if __name__ == "__main__":
 
     states = session.query(State).order_by(State.id).first()
     if states is not None:
-        print("{0}: {1}".format(state.id, state.name))
+        print("{0}: {1}".format(state.id, state.name) sep=": ")
     else:
         print("Nothing")

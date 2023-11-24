@@ -8,27 +8,20 @@ You must import State and Base from model_state - from model_state import Base, 
 Your script should connect to a MySQL server running on localhost at port 3306
 Results must be sorted in ascending order by states.id
 '''
-from sys import argv
+import sys
 from model_state import Base, State
-from sqlalchemy import create_engine
+from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
     '''
     prints the first State object from the database hbtn_0e_6_usa
-    by taking the db arguments
+    by taking the db argument
     '''
-    db_url = "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
-            argv[1], argv[2], argv[3])
-
-    engine = create_engine(db_url)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format
+                (sys.argv[1], sys.argv[2], sys.argv[3]))
+    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
-
     session = Session()
-
-    states = session.query(State).filter(State.name.contains('a'))
-    if states is not None:
-	for state in states:
-	        print("{0}: {1}".format(state.id, state.name))
-    else:
-        print("Nothing")
+    for i in session.query(State).filter(State.name.like('%a%')):
+        print(i.id, i.name, sep=": ")

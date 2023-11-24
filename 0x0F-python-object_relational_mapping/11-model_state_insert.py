@@ -10,7 +10,7 @@
 '''
 from sys import argv
 from model_state import Base, State
-from sqlalchemy import create_engine
+from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
@@ -28,7 +28,6 @@ if __name__ == "__main__":
 
     new_state = State(name="Louisiana")
     session.add(new_state)
+    new_inst = session.query(State).filter_by(name="Louisiana").first()
+    print(new_inst.id)
     session.commit()
-
-    print("{0}".format(new_state.id))
-    session.close()

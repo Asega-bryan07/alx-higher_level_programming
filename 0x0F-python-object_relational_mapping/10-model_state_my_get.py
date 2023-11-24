@@ -10,26 +10,33 @@ You can assume you have one record with the state name to search
 Results must display the states.id
 If no state has the name you searched for, display Not found
 '''
-from sys import argv
-from model_state import Base, State
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
+    import sys
+    from model_state import Base, State
+    from sqlalchemy import create_engine
+    from sqlalchemy.orm import sessionmaker
+    from sqlalchemy.ext.declarative import declarative base
     '''
     prints the first State object from the database hbtn_0e_6_usa
     by taking the db arguments
     '''
-    db_url = "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
-            argv[1], argv[2], argv[3])
+    argv = sys.argv
+    if len(argv) < 5 or ":" in argv[4]:
+        exit(1)
 
-    engine = create_engine(db_url)
-    Session = sessionmaker(bind=engine)
+    conn_str = "mysql+mysqldb://{}:{}@localhost:3306/{}"
+    engine = create_engine(conn_str.format(argv[1], argv[2], argv[3]))
+    session = sessionmaker(engine)
 
+    Base.metadata.create_all(engine)
     session = Session()
 
-    states = session.query(State).filter(State.name == argv[4]).first())
-    if states is not None:
-	print("{0}".format(state.id))
-    else:
+    states = session.query(State).filter(State.name.like[argv[4]]).all()
+
+    if len(states) == 0:
         print("Not found")
+    else:
+        print(states[0].id)
+
+        session.close()

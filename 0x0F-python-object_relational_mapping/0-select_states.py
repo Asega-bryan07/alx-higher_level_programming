@@ -21,9 +21,11 @@ if __name__ == "__main__":
 
     db_cursor = db_connect.cursor()
 
-    db_cursor.execute('SELECT * FROM states')
+    db_cursor.execute("SELECT * FROM states")
 
     rows_selected = db_cursor.fetchall()
 
     for row in rows_selected:
         print(row)
+        db_cursor.close()
+        bd_connect.close()

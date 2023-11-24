@@ -31,4 +31,5 @@ if __name___ == "__main__":
 
     for row in rows_selected:
         print(row)
-
+        db_cursor.close()
+        db_connect.close()

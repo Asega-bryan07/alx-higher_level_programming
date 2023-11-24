@@ -16,19 +16,18 @@ if __name__ == "__main__":
     '''
     updates the name of a State object from the database hbtn_0e_6_usa
     '''
-    db_url = "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
-	    argv[1], argv[2], argv[3])
+    db_url = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
+    .format(argv[1], argv[2], argv[3]))
+    Base.metadata.create_all(db_url)
+    Session = sessionmaker(bind=db_url)
 
     engine = create_engine(db_url)
     Session = sessionmaker(bind=engine)
 
     session = Session()
 
-    states = session.query(State).filter(State.name.contains('a'))
-    if states is not None:
-	for state in states:
-	    session.delete(state)
-
+    for i in session.query(State).filter(State.name.like('%a%')):
+        session.delete(i)
+        
     session.commit()
 
-    session.close()
