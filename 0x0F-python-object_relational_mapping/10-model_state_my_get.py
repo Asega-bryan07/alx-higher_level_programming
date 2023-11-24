@@ -16,7 +16,7 @@ if __name__ == "__main__":
     from model_state import Base, State
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
-    from sqlalchemy.ext.declarative import declarative base
+    from sqlalchemy.ext.declarative import declarative_base
     '''
     prints the first State object from the database hbtn_0e_6_usa
     by taking the db arguments
