@@ -11,5 +11,5 @@ if __name__ == "__main__":
     url = 'https://alx-intranet.hbtn.io/status'
     r = requests.get(url)
     print('Page Response:')
-    print('\t type {}'.format(type(r.text)))
-    print('\t content {}'.format(r.text))
+    print('\t- type {}'.format(type(r.text)))
+    print('\t- content {}'.format(r.text))
