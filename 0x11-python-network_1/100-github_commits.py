@@ -25,7 +25,6 @@ LETS DO IT!
 '''
 from sys import argv
 import requests
-import json
 
 if __name__ == "__main__":
     url = 'https://developer.github.com/v3/repos/{}/{}/commits/'.format(
