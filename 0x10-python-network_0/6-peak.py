@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 def find_peak(list_of_integers):
+    find_peak = __import__('6-peak.txt').find_peak
     '''
     args:
     list_of_integers(int): list of the integers where peak is to be found
